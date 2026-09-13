@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spin Winner</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+header {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+}
+
+button:hover {
+    opacity: .9;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #f3f4f6;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+#winner {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎡 Spin Winner</h1>
+    <p>Join the lucky draw</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Join the Draw</h2>
+
+        <input
+            type="text"
+            id="nameInput"
+            placeholder="Enter your name"
+        >
+
+        <button onclick="addName()">Join Now</button>
+    </div>
+
+    <div class="card">
+        <h2>Participants</h2>
+
+        <ul id="nameList"></ul>
+    </div>
+
+    <div class="card">
+        <h2>🏆 Latest Winner</h2>
+        <div id="winner">Waiting for winner...</div>
+    </div>
+
+</div>
+
+<script>
+
+let participants = [];
+
+function addName() {
+
+    const input = document.getElementById("nameInput");
+    const name = input.value.trim();
+
+    if (name === "") {
+        alert("Please enter your name.");
+        return;
+    }
+
+    participants.push(name);
+
+    input.value = "";
+
+    displayNames();
+}
+
+function displayNames() {
+
+    const list = document.getElementById("nameList");
+
+    list.innerHTML = "";
+
+    participants.forEach((name) => {
+
+        const li = document.createElement("li");
+
+        li.textContent = "👤 " + name;
+
+        list.appendChild(li);
+
+    });
+}
+
+</script>
+
+</body>
+</html>
